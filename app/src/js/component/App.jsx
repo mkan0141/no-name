@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 
 var config =  require('./../config/config.js')
 import Twitter from 'twitter'
-import 
 
 class App extends Component {
   constructor(props) {
@@ -42,7 +41,17 @@ class App extends Component {
   }
 
   GetTweet() {
-    this.twitter.get('statuses/user_timeline', {count: 200}, (error, tweet, response) => {
+    var stream = this.twitter.stream('user');
+
+    stream.on('data', function(event) {
+  console.log(event.user.name + ': ' + event.text);
+});
+
+stream.on('error', function(error) {
+  throw error;
+});
+/*
+    this.twitter.stream('statuses/home_timeline', {count: 200}, (error, tweet, response) => {
       if (!error) {
         this.setState({
           tweets: tweet
@@ -52,6 +61,7 @@ class App extends Component {
         console.log(error)
       }
     });
+*/
   }
 
   render() {
