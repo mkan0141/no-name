@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const publidDir = path.join(__dirname, '/public');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = [
   {
@@ -46,5 +47,30 @@ module.exports = [
         historyApiFallback: true,
         contentBase: publidDir,
     }
-  }
+  },
+  {
+    entry: {
+      style: './app/src/css/index.scss',
+    },
+    output: {
+      path: publidDir,
+      publicPath: './public',
+      filename: 'bundle.css',
+    },
+    module: {
+      loaders: [
+        {
+          test: /\.css$/,
+          loader: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader' }),
+        },
+        {
+          test: /\.scss$/,
+          loader: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader!sass-loader' }),
+        },
+      ],
+    },
+    plugins: [
+      new ExtractTextPlugin('bundle.css'),
+    ],
+  },
 ];
