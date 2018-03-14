@@ -11,9 +11,7 @@ class Tweets extends Component {
     // console.log(this.props.tweets)
     if (this.props.tweets == null) {
       console.log('tweet nothing')
-      return (
-        <h1>hoge</h1>
-      )
+      return ;
     }
     // console.log('debug: ' + this.props.tweets)
     this.props.tweets.map((tweet) => {

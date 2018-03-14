@@ -52,7 +52,7 @@ class App extends Component {
       //console.log(event.user.name + ': ' + event.text);
       console.log('in GetTweet')
       var tweetsArray = this.state.tweets.slice()
-      tweetsArray.push(event)
+      tweetsArray.unshift(event)
       this.setState({
         tweets: tweetsArray
       }, () => {console.log('in state')})
