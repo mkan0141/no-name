@@ -10,7 +10,6 @@ class App extends Component {
     this.state = ({date: new Date(), tweets: null});
     this.twitter = new Twitter({consumer_key: config.consumer_key, consumer_secret: config.consumer_secret, access_token_key: config.access_token_key, access_token_secret: config.access_token_secret})
     this.GetTweet = this.GetTweet.bind(this)
-    this.renderTimeline = this.renderTimeline.bind(this)
 
     this.twitter.get('statuses/home_timeline', {
       count: 200
@@ -24,26 +23,6 @@ class App extends Component {
         console.log(error)
       }
     });
-  }
-
-  renderTimeline() {
-    if (this.state.tweets == null) {
-      console.log('tweet nothing')
-      return;
-    }
-
-    const TweetsList = this.state.tweets.map((tweet) => {
-      console.log(tweet)
-      return (
-        <li key={tweet.id} id="tweet">{tweet.text}</li>
-      )
-    })
-
-    return (
-      <ul>
-        {TweetsList}
-      </ul>
-    )
   }
 
   GetTweet() {
