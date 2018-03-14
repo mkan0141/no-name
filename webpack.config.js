@@ -2,7 +2,8 @@ const path = require('path');
 const webpack = require('webpack');
 const publidDir = path.join(__dirname, '/public');
 
-module.exports = {
+module.exports = [
+  {
     entry: './app/src/index.jsx',
     target: 'node',
     // バンドルファイルの出力場所
@@ -45,4 +46,5 @@ module.exports = {
         historyApiFallback: true,
         contentBase: publidDir,
     }
-};
+  }
+];
