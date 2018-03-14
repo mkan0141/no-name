@@ -11,19 +11,27 @@ class Tweets extends Component {
     // console.log(this.props.tweets)
     if (this.props.tweets == null) {
       // console.log('tweet nothing')
-      return ;
+      return;
     }
     // console.log('debug: ' + this.props.tweets)
-    this.props.tweets.map((tweet) => {
-      // console.log(' in ' + tweet.text)
-    })
 
     const TweetsList = this.props.tweets.map((tweet) => {
-      // console.log(tweet)
+      if (tweet.retweeted_status != null) {
+        return (
+          <tr>
+            <td><img src={tweet.retweeted_status.user.profile_image_url}/></td>
+            <td>
+              <li key={tweet.retweeted_status.id} id="tweet">{tweet.retweeted_status.text}</li>
+            </td>
+          </tr>
+        )
+      }
       return (
         <tr>
-          <td><img src={tweet.user.profile_image_url} /></td>
-          <td><li key={tweet.id} id="tweet">{tweet.text}</li></td>
+          <td><img src={tweet.user.profile_image_url}/></td>
+          <td>
+            <li key={tweet.id} id="tweet">{tweet.text}</li>
+          </td>
         </tr>
       )
     })
@@ -37,9 +45,9 @@ class Tweets extends Component {
   }
 
   render() {
-    return(
+    return (
       <div>
-      {this.TweetList()}
+        {this.TweetList()}
       </div>
     )
   }
