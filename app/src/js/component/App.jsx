@@ -1,73 +1,63 @@
-import React, {Component} from 'react'
-import Tweets from './Tweets'
+import React, {Component} from "react";
+import Timeline from "./Timeline";
 
-var config = require('./../config/config.js')
-import Twitter from 'twitter'
+var config = require("./../config/config.js");
+import Twitter from "twitter";
 
 class App extends Component {
   constructor(props) {
-    super(props)
-    this.state = ({date: new Date(), tweets: null});
-    this.twitter = new Twitter({consumer_key: config.consumer_key, consumer_secret: config.consumer_secret, access_token_key: config.access_token_key, access_token_secret: config.access_token_secret})
-    this.GetTweet = this.GetTweet.bind(this)
+    super(props);
+    this.state = {
+      tweets: null
+    };
+    this.twitter = new Twitter({consumer_key: config.consumer_key, consumer_secret: config.consumer_secret, access_token_key: config.access_token_key, access_token_secret: config.access_token_secret});
+    this.GetTweet = this.GetTweet.bind(this);
 
-    this.twitter.get('statuses/home_timeline', {
+    this.twitter.get("statuses/home_timeline", {
       count: 200
     }, (error, tweet, response) => {
       if (!error) {
         this.setState({
           tweets: tweet
-        }, () => console.log('in'))
+        }, () => console.log("in"));
       } else {
-        console.log('error: ')
-        console.log(error)
+        console.log("error: ");
+        console.log(error);
       }
     });
   }
 
   GetTweet() {
-    var stream = this.twitter.stream('user');
-    stream.on('data', (event) => {
+    var stream = this.twitter.stream("user");
+    stream.on("data", event => {
       //console.log(event.user.name + ': ' + event.text);
-      console.log('in GetTweet')
-      var tweetsArray = this.state.tweets.slice()
-      tweetsArray.unshift(event)
+      console.log("in GetTweet");
+      var tweetsArray = this.state.tweets.slice();
+      tweetsArray.unshift(event);
       this.setState({
         tweets: tweetsArray
-      }, () => {console.log('in state')})
-
+      }, () => {
+        console.log("in state");
+      });
     });
 
-    stream.on('error', function(error) {
+    stream.on("error", function(error) {
       throw error;
     });
-    /*
-
-    this.twitter.get('statuses/home_timeline', {count: 200}, (error, tweet, response) => {
-      if (!error) {
-        this.setState({
-          tweets: tweet
-        },() => console.log('in'))
-      }else{
-        console.log('error: ')
-        console.log(error)
-      }
-    });
-*/
   }
 
   componentDidMount() {
-    console.log('in')
+    console.log("in");
     this.GetTweet();
   }
 
   render() {
     return (
       <div>
-        <Tweets tweets={this.state.tweets} />
+        <Timeline tweets={this.state.tweets}/>
       </div>
-    )
+    );
   }
 }
 
-export default App
+export default App;

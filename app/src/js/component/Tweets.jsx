@@ -1,56 +1,44 @@
-import React, {Component} from 'react'
+import React from 'react'
 
-class Tweets extends Component {
-  constructor(props) {
-    super(props)
-    this.TweetList = this.TweetList.bind(this)
+const Tweets = (props) => {
+  if (props.tweets === null) {
+    return (
+      <div></div>
+    );
   }
 
-  TweetList() {
-    console.log(typeof(this.props.tweets))
-    // console.log(this.props.tweets)
-    if (this.props.tweets == null) {
-      // console.log('tweet nothing')
-      return;
-    }
-    // console.log('debug: ' + this.props.tweets)
-
-    const TweetsList = this.props.tweets.map((tweet) => {
-      if (tweet.retweeted_status != null) {
-        return (
-          <tr>
-            <td><img src={tweet.retweeted_status.user.profile_image_url}/></td>
-            <td>
-              <li key={tweet.retweeted_status.id} id="tweet">{tweet.retweeted_status.text}</li>
-            </td>
-          </tr>
-        )
-      }
+  const TweetsList = props.tweets.map(tweet => {
+    if (tweet.retweeted_status != null) {
       return (
-        <tr>
-          <td><img src={tweet.user.profile_image_url}/></td>
-          <td>
-            <li key={tweet.id} id="tweet">{tweet.text}</li>
-          </td>
-        </tr>
-      )
-    })
-
-    // console.log('List' + TweetsList)
+        <article class="tweet-container">
+          <header>
+            <img src={tweet.retweeted_status.user.profile_image_url_https} class="user_image"/>
+            <b>{tweet.retweeted_status.user.screen_name}</b>
+          </header>
+          <li key={tweet.retweeted_status.id}>
+            {tweet.retweeted_status.text}
+          </li>
+        </article>
+      );
+    }
     return (
-      <ul>
-        {TweetsList}
-      </ul>
-    )
-  }
+      <article class="tweet-container">
+        <header>
+          <img src={tweet.user.profile_image_url_https} class="user_image"/>
+          <b>{tweet.user.screen_name}</b>
+        </header>
+        <li key={tweet.id} id="tweet">
+          {tweet.text}
+        </li>
+      </article>
+    );
+  });
 
-  render() {
-    return (
-      <div>
-        {this.TweetList()}
-      </div>
-    )
-  }
+  return (
+    <ul>
+      {TweetsList}
+    </ul>
+  )
 }
 
-export default Tweets;
+export default Tweets
