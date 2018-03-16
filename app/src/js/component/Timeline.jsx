@@ -6,8 +6,13 @@ class Timeline extends Component {
     super(props);
   }
 
+  /*
+    render
+    -- <TimelineHeader /> ... Timelineのheader
+    -- <tweets /> ... tweetを表示するcomponent
+  */
   render() {
-    return (<Tweets tweets={this.props.tweets}/>)
+    return (<Tweets tweets={this.props.tweets} />)
   }
 }
 
