@@ -1,12 +1,18 @@
-.user_icon {
-  border-radius: 50%;
+.name_info {
   display: inline-block;
+  vertical-align: top;
+  padding-left: 10px;
 }
 
-.name_info {
+.user_name {
   display: inline-block;
 }
 
 .user_id {
-  color: #cccccc
+  display: inline;
+  color: #cccccc;
+}
+
+.name_info:hover {
+  color: #0000ff;
 }

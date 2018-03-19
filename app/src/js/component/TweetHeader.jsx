@@ -10,10 +10,6 @@ import React from 'react'
 const TweetHeader = (props) => {
   return (
     <header className="acount_wrapper">
-      <img
-      　　className="user_icon"
-      　　src={props.user_icon}
-      />
       <div className="name_info">
         <div className="user_name"><b>{props.user_name}</b></div>
         <div className="user_id">@{props.user_id}</div>
@@ -22,5 +18,11 @@ const TweetHeader = (props) => {
   )
 }
 
+/*
+const ReTweetHeader = (props) => {
+  return (
 
+  )
+}
+*/
 export default TweetHeader

@@ -1,8 +1,14 @@
 import React, {Component} from "react";
-import Timeline from "./Timeline";
+import Profile from './Profile';
+import Timeline from './Timeline';
 
 var config = require("./../config/config.js");
 import Twitter from "twitter";
+
+/*
+    App.jsxでtwitter apiを叩く必要がないので
+    apiを叩く部分はいずれ退避させる
+*/
 
 class App extends Component {
   constructor(props) {
@@ -54,6 +60,7 @@ class App extends Component {
   render() {
     return (
       <div>
+        <Profile />
         <Timeline tweets={this.state.tweets}/>
       </div>
     );
