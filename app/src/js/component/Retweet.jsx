@@ -15,7 +15,7 @@ class Retweet extends Component {
     return (
       <article className="tweet-container">
         <div className="hoge">
-          <div className="retweet_user">{this.props.retweet_user}</div>
+          <div className="retweet">{this.props.retweet_user} retweeted</div>
           <TweetHeader
             user_name= {this.props.tweet.user.name}
             user_id  = {this.props.tweet.user.screen_name}
