@@ -1,4 +1,6 @@
 import React, {Component} from "react";
+
+import SelectHeader from './SelectHeader'
 import Tweets from './Tweets'
 
 class Timeline extends Component {
@@ -12,7 +14,12 @@ class Timeline extends Component {
     -- <tweets /> ... tweetを表示するcomponent
   */
   render() {
-    return (<Tweets tweets={this.props.tweets} />)
+    return (
+      <div className="timeline">
+        <SelectHeader />
+        <Tweets tweets={this.props.tweets} />
+      </div>
+    )
   }
 }
 

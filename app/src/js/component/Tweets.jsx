@@ -22,9 +22,9 @@ const Tweets = (props) => {
   });
 
   return (
-    <ul>
+    <div className="tweet-list">
       {TweetsList}
-    </ul>
+    </div>
   )
 }
 
