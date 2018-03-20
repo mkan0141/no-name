@@ -9,8 +9,14 @@ import React from 'react'
 
 const TweetHeader = (props) => {
   return (
-    <header className="acount_wrapper">
-      <div className="name_info">
+    <header className="account_wrapper">
+      <div className="user_icon">
+      <img
+        src={props.user_icon}
+  　 　  className="user_icon"
+      />
+      </div>
+      <div className="user_info tweet">
         <div className="user_name"><b>{props.user_name}</b></div>
         <div className="user_id">@{props.user_id}</div>
       </div>

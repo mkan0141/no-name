@@ -15,7 +15,7 @@ const Tweets = (props) => {
 */
   const TweetsList = props.tweets.map(tweet => {
     if (tweet.retweeted_status != null) {
-      return <Retweet tweet={tweet.retweeted_status} />
+      return <Retweet tweet={tweet.retweeted_status} retweet_user={tweet.user.name}/>
     } else {
       return <Tweet tweet={tweet} />
     }

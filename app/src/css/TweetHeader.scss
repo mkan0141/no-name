@@ -1,7 +1,13 @@
-.name_info {
-  display: inline-block;
+.user_info {
+  display: inline;
   vertical-align: top;
   padding-left: 10px;
+}
+
+.user_icon {
+  position: absolute;
+  display: inline-block;
+  padding: 2px;
 }
 
 .user_name {
@@ -15,4 +21,10 @@
 
 .name_info:hover {
   color: #0000ff;
+}
+
+
+.tweet {
+  position: relative;
+  padding-left: 50px;
 }
