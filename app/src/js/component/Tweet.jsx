@@ -20,7 +20,7 @@ class Tweet extends Component {
             user_id  = {this.props.tweet.user.screen_name}
             user_icon= {this.props.tweet.user.profile_image_url_https}
           />
-          <div key={this.props.tweet.id} id="tweet" className="tweet">
+          <div key={this.props.tweet.id} id="tweet" className="tweet tweet-text">
             {this.props.tweet.text}
           </div>
         </div>
