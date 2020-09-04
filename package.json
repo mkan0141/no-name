@@ -20,7 +20,7 @@
     "electron-oauth-twitter": "^1.1.0",
     "extract-text-webpack-plugin": "^3.0.2",
     "json-loader": "^0.5.7",
-    "node-sass": "^4.7.2",
+    "node-sass": "^4.13.1",
     "node-twitter-api": "^1.8.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
